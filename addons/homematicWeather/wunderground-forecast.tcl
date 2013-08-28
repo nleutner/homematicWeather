@@ -108,3 +108,4 @@ append rega_cmd "w40.State('$tag0title\n$tag0\n\n$tag1title\n$tag1\n\n$tag2title
 
 
 rega_script $rega_cmd
+

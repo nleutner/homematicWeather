@@ -41,3 +41,4 @@ append rega_cmd "conditions.State('Aktualisierung: $observation_time\nBedingunge
 rega_script $rega_cmd
 
 
+
