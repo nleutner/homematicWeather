@@ -9,15 +9,15 @@ source config.tcl
 # config
 set sysvar Wetterprognose
 
-# verwendete Systemvariablen:
+# verwendete Systemvari
 #   Wetterprognose   Zeichenkette
 
 
 # Ab hier nichts mehr verändern
 set url http://api.wunderground.com/api/$key/forecast10day/lang:DL/q/Germany/$ort.xml
-exec /usr/bin/wget -q -O /usr/local/addons/Weather/wunderground-forecast10d.xml $url
+exec /usr/bin/wget -q -O /usr/local/addons/homematicWeather/wunderground-forecast10d.xml $url
 
-set f [open "/usr/local/addons/Weather/wunderground-forecast10d.xml"]
+set f [open "/usr/local/addons/homematicWeather/wunderground-forecast10d.xml"]
 set input [read $f]
 close $f
 

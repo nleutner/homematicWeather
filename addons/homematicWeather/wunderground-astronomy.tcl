@@ -10,9 +10,9 @@
         # Aufruf und Erstellung der xml
 
         set url http://api.wunderground.com/api/2b2f838faecd9466/astronomy/lang:DL/q/Germany/arnsberg.xml
-        exec /usr/bin/wget -q -O /usr/local/addons/wettermond/wettermond.xml $url
+        exec /usr/bin/wget -q -O /usr/local/addons/homematicWeather/wettermond.xml $url
 
-        set f [open "/usr/local/addons/wettermond/wettermond.xml"]
+        set f [open "/usr/local/addons/homematicWeather/wettermond.xml"]
         set input [read $f]
         close $f
 
