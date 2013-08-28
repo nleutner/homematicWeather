@@ -15,9 +15,9 @@ set sysvar Wetterprognose-Aktuell
 # Ab hier nichts mehr verändern
 
 set url http://api.wunderground.com/api/$key/conditions/lang:DL/q/Germany/$ort.xml
-exec /usr/bin/wget -q -O /usr/local/addons/Weather/wunderground-conditions.xml $url
+exec /usr/bin/wget -q -O /usr/local/addons/homematicWeather/wunderground-conditions.xml $url
 
-set f [open "/usr/local/addons/Weather/wunderground-conditions.xml"]
+set f [open "/usr/local/addons/homematicWeather/wunderground-conditions.xml"]
 set input [read $f]
 close $f
 
