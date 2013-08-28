@@ -1,41 +1,46 @@
-        load tclrega.so
+#!/bin/tclsh
 
-        #
-        # Read weather data <Ort>
-        # Update der Daten auf wunderground erfolgt immer zur vollen Stunde
+# load libaries
+load tclrega.so
 
-        # Variablen:
-        #   Wetter_mond     Zeichenkette
+# include config
+source config.tcl
 
-        # Aufruf und Erstellung der xml
+# config
+set sysvar Wetterprognose-Mond
 
-        set url http://api.wunderground.com/api/2b2f838faecd9466/astronomy/lang:DL/q/Germany/arnsberg.xml
-        exec /usr/bin/wget -q -O /usr/local/addons/homematicWeather/wettermond.xml $url
+# verwendete Systemvariablen:
+#   Wetterprognose-Mond    Zeichenkette
 
-        set f [open "/usr/local/addons/homematicWeather/wettermond.xml"]
-        set input [read $f]
-        close $f
+# Aufruf und Erstellung der xml
 
-        #
-        # goto section with current observation
-        #
-        regexp "<moon_phase>(.*?)</moon_phase>" $input dummy current  ; #get current moon_phase
-        regexp "<percentIlluminated>(.*?)</percentIlluminated>" $current dummy percentIlluminated  ;
-	regexp "<ageOfMoon>(.*?)</ageOfMoon>" $current dummy ageOfMoon  ;
-	regexp "<sunset>(.*?)</sunset>" $input dummy current  ; #get current sunset
-	regexp "<hour>(.*?)</hour>" $current dummy sunseth  ;
-	regexp "<minute>(.*?)</minute>\n" $current dummy sunsetm  ;
-	regexp "<sunrise>(.*?)</sunrise>" $input dummy current  ; #get current sunrise
-	regexp "<hour>(.*?)</hour>" $current dummy sunriseh  ;
-	regexp "<minute>(.*?)</minute>" $current dummy sunrisem  ;
+set url http://api.wunderground.com/api/$key/astronomy/lang:DL/q/Germany/$ort.xml
+exec /usr/bin/wget -q -O /usr/local/addons/homematicWeather/wunderground-astronomy.xml $url
 
-        #
-        # set ReGaHss variables
-        #
+set f [open "/usr/local/addons/homematicWeather/wunderground-astronomy.xml"]
+set input [read $f]
+close $f
 
-	set rega_cmd ""
-	append rega_cmd "var w0 = dom.GetObject('Wetter-Mond');"
+#
+# goto section with current observation
+#
+regexp "<moon_phase>(.*?)</moon_phase>" $input dummy current  ; #get current moon_phase
+regexp "<percentIlluminated>(.*?)</percentIlluminated>" $current dummy percentIlluminated  ;
+regexp "<ageOfMoon>(.*?)</ageOfMoon>" $current dummy ageOfMoon  ;
+regexp "<sunset>(.*?)</sunset>" $input dummy current  ; #get current sunset
+regexp "<hour>(.*?)</hour>" $current dummy sunseth  ;
+regexp "<minute>(.*?)</minute>\n" $current dummy sunsetm  ;
+regexp "<sunrise>(.*?)</sunrise>" $input dummy current  ; #get current sunrise
+regexp "<hour>(.*?)</hour>" $current dummy sunriseh  ;
+regexp "<minute>(.*?)</minute>" $current dummy sunrisem  ;
 
-	append rega_cmd "w0.State('Mondaufgang: $sunseth:$sunsetm\nMonduntergang: $sunriseh:$sunrisem\nSichtbarkeit: $percentIlluminated %\nMondalter: $ageOfMoon Tage');"
+#
+# set ReGaHss variables
+#
 
-        rega_script $rega_cmd
+set rega_cmd ""
+append rega_cmd "var w0 = dom.GetObject('$sysvar');"
+
+append rega_cmd "w0.State('Mondaufgang: $sunseth:$sunsetm\nMonduntergang: $sunriseh:$sunrisem\nSichtbarkeit: $percentIlluminated %\nMondalter: $ageOfMoon Tage');"
+
+rega_script $rega_cmd
