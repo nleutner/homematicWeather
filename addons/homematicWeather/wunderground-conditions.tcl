@@ -40,5 +40,12 @@ append rega_cmd "conditions.State('Aktualisierung: $observation_time\nBedingunge
 
 rega_script $rega_cmd
 
+# set Wetter-Temp-Aktuell
+set rega_cmd ""
+append rega_cmd "var conditions = dom.GetObject('Wetter-Temp-Aktuell');"
+append rega_cmd "conditions.State('$temp_c');"
+
+rega_script $rega_cmd
+
 
 
