@@ -125,7 +125,9 @@ regexp "<high>(.*?)</high>" $period1 dummy high ;
 regexp "<celsius>(.*?)</celsius>" $high dummy maxtemp1 ;
 #low temp
 regexp "<low>(.*?)</low>" $period1 dummy low;
-regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp1 ;
+regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp1
+#rain %
+regexp "<pop>(.*?)</pop>" $period1 dummy pop1;
 
 #
 # period 2
@@ -138,6 +140,8 @@ regexp "<celsius>(.*?)</celsius>" $high dummy maxtemp2 ;
 #low temp
 regexp "<low>(.*?)</low>" $period2 dummy low;
 regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp2 ;
+#rain %
+regexp "<pop>(.*?)</pop>" $period2 dummy pop2;
 
 #
 # period 3
@@ -150,7 +154,8 @@ regexp "<celsius>(.*?)</celsius>" $high dummy maxtemp3 ;
 #low temp
 regexp "<low>(.*?)</low>" $period3 dummy low;
 regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp3 ;
-
+#rain %
+regexp "<pop>(.*?)</pop>" $period3 dummy pop3;
 
 #
 # Write variables to CCU
@@ -158,10 +163,13 @@ regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp3 ;
 set rega_cmd ""
 append rega_cmd "dom.GetObject('Wetter-MaxTemp-Heute').State('$maxtemp1');"
 append rega_cmd "dom.GetObject('Wetter-MinTemp-Heute').State('$lowtemp1');"
+append rega_cmd "dom.GetObject('Wetter-Regen-Heute').State('$pop1');"
 append rega_cmd "dom.GetObject('Wetter-MaxTemp-Morgen').State('$maxtemp2');"
 append rega_cmd "dom.GetObject('Wetter-MinTemp-Morgen').State('$lowtemp2');"
+append rega_cmd "dom.GetObject('Wetter-Regen-Morgen').State('$pop2');"
 append rega_cmd "dom.GetObject('Wetter-MaxTemp-Uebermorgen').State('$maxtemp3');"
 append rega_cmd "dom.GetObject('Wetter-MinTemp-Uebermorgen').State('$lowtemp3');"
+append rega_cmd "dom.GetObject('Wetter-Regen-Uebermorgen').State('$pop3');"
 rega_script $rega_cmd
 
 
