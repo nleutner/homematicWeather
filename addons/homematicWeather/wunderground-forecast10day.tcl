@@ -109,6 +109,60 @@ append rega_cmd "w40.State('$tag0title\n$tag0\n\n$tag1title\n$tag1\n\n$tag2title
 
 rega_script $rega_cmd
 
+#
+# Simpleforecast
+#
+
+regexp "<simpleforecast>(.*?)</simpleforecast>" $input dummy simpleforecast  ; #get simpleforecast
+
+#
+# period 1
+#
+regexp "<period>1(.*?)</forecastday>" $simpleforecast dummy period1 ;
+
+#max temp
+regexp "<high>(.*?)</high>" $period1 dummy high ;
+regexp "<celsius>(.*?)</celsius>" $high dummy maxtemp1 ;
+#low temp
+regexp "<low>(.*?)</low>" $period1 dummy low;
+regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp1 ;
+
+#
+# period 2
+#
+regexp "<period>2(.*?)</forecastday>" $simpleforecast dummy period2 ;
+
+#max temp
+regexp "<high>(.*?)</high>" $period2 dummy high ;
+regexp "<celsius>(.*?)</celsius>" $high dummy maxtemp2 ;
+#low temp
+regexp "<low>(.*?)</low>" $period2 dummy low;
+regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp2 ;
+
+#
+# period 3
+#
+regexp "<period>3(.*?)</forecastday>" $simpleforecast dummy period3 ;
+
+#max temp
+regexp "<high>(.*?)</high>" $period3 dummy high ;
+regexp "<celsius>(.*?)</celsius>" $high dummy maxtemp3 ;
+#low temp
+regexp "<low>(.*?)</low>" $period3 dummy low;
+regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp3 ;
+
+
+#
+# Write variables to CCU
+#
+set rega_cmd ""
+append rega_cmd "dom.GetObject('Wetter-MaxTemp-Heute').State('$maxtemp1');"
+append rega_cmd "dom.GetObject('Wetter-MinTemp-Heute').State('$lowtemp1');"
+append rega_cmd "dom.GetObject('Wetter-MaxTemp-Morgen').State('$maxtemp2');"
+append rega_cmd "dom.GetObject('Wetter-MinTemp-Morgen').State('$lowtemp2');"
+append rega_cmd "dom.GetObject('Wetter-MaxTemp-Uebermorgen').State('$maxtemp3');"
+append rega_cmd "dom.GetObject('Wetter-MinTemp-Uebermorgen').State('$lowtemp3');"
+rega_script $rega_cmd
 
 
 
