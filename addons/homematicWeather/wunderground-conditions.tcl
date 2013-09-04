@@ -31,20 +31,13 @@ regexp "<wind_kph>(.*?)</wind_kph>" $current dummy wind_kph  ; # Windgeschwindig
 regexp "<pressure_mb>(.*?)</pressure_mb>" $current dummy pressure_mb  ; # Luftdruck #ZAHL
 regexp "<feelslike_c>(.*?)</feelslike_c>" $current dummy feelslike_c  ; # Temp.gefühlt wie
 
-#
 # set ReGaHss variables
-#
 set rega_cmd ""
-append rega_cmd "var conditions = dom.GetObject('$sysvar');"
-append rega_cmd "conditions.State('Aktualisierung: $observation_time\nBedingungen: $weather\nTemperatur: $temp_c °C\nGefühlt wie: $feelslike_c °C\nLuftdruck: $pressure_mb mb\nLuftfeuchte: $relative_humidity\nWindgeschwindigkeit: $wind_kph km/h\nWindrichtung: $wind_dir');"
-
+append rega_cmd "conditions = dom.GetObject('$sysvar').State('Aktualisierung: $observation_time\nBedingungen: $weather\nTemperatur: $temp_c °C\nGefühlt wie: $feelslike_c °C\nLuftdruck: $pressure_mb mb\nLuftfeuchte: $relative_humidity\nWindgeschwindigkeit: $wind_kph km/h\nWindrichtung: $wind_dir');"
 rega_script $rega_cmd
 
-# set Wetter-Temp-Aktuell
 set rega_cmd ""
-append rega_cmd "var conditions = dom.GetObject('Wetter-Temp-Aktuell');"
-append rega_cmd "conditions.State('$temp_c');"
-
+append rega_cmd "conditions = dom.GetObject('Wetter-Temp-Aktuell').State('$temp_c');"
 rega_script $rega_cmd
 
 
