@@ -101,11 +101,8 @@ regexp "<period>19</period>(.*?)</forecastday>" $input dummy current  ; #get cur
 regexp "<title>(.*?)</title>" $current dummy tag19title ;
 regexp "<fcttext_metric><!\\\[CDATA\\\[(.*?)]]></fcttext_metric>" $current dummy tag19 ;
 
+# set ReGaHss variables
 set rega_cmd ""
-
-append rega_cmd "var w40 = dom.GetObject('$sysvar');"
-append rega_cmd "w40.State('$tag0title\n$tag0\n\n$tag1title\n$tag1\n\n$tag2title\n$tag2\n\n$tag3title\n$tag3\n\n$tag4title\n$tag4\n\n$tag5title\n$tag5\n\n$tag6title\n$tag6\n\n$tag7title\n$tag7\n\n$tag8title\n$tag8\n\n$tag9title\n$tag9\n\n$tag10title\n$tag10\n\n$tag11title\n$tag11\n\n$tag12title\n$tag12\n\n$tag13title\n$tag13\n\n$tag14title\n$tag14\n\n$tag15title\n$tag15\n\n$tag16title\n$tag16\n\n$tag17title\n$tag17\n\n$tag18title\n$tag18\n\n$tag19title\n$tag19');"
-
-
+append rega_cmd "dom.GetObject('$sysvar').State('$tag0title\n$tag0\n\n$tag1title\n$tag1\n\n$tag2title\n$tag2\n\n$tag3title\n$tag3\n\n$tag4title\n$tag4\n\n$tag5title\n$tag5\n\n$tag6title\n$tag6\n\n$tag7title\n$tag7\n\n$tag8title\n$tag8\n\n$tag9title\n$tag9\n\n$tag10title\n$tag10\n\n$tag11title\n$tag11\n\n$tag12title\n$tag12\n\n$tag13title\n$tag13\n\n$tag14title\n$tag14\n\n$tag15title\n$tag15\n\n$tag16title\n$tag16\n\n$tag17title\n$tag17\n\n$tag18title\n$tag18\n\n$tag19title\n$tag19');"
 rega_script $rega_cmd
 

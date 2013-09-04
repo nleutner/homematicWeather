@@ -101,20 +101,16 @@ regexp "<period>19</period>(.*?)</forecastday>" $input dummy current  ; #get cur
 regexp "<title>(.*?)</title>" $current dummy tag19title ;
 regexp "<fcttext_metric><!\\\[CDATA\\\[(.*?)]]></fcttext_metric>" $current dummy tag19 ;
 
+# set ReGaHss variables
 set rega_cmd ""
-
 append rega_cmd "dom.GetObject('$sysvar').State('$tag0title\n$tag0\n\n$tag1title\n$tag1\n\n$tag2title\n$tag2\n\n$tag3title\n$tag3\n\n$tag4title\n$tag4\n\n$tag5title\n$tag5\n\n$tag6title\n$tag6\n\n$tag7title\n$tag7\n\n$tag8title\n$tag8\n\n$tag9title\n$tag9\n\n$tag10title\n$tag10\n\n$tag11title\n$tag11\n\n$tag12title\n$tag12\n\n$tag13title\n$tag13\n\n$tag14title\n$tag14\n\n$tag15title\n$tag15\n\n$tag16title\n$tag16\n\n$tag17title\n$tag17\n\n$tag18title\n$tag18\n\n$tag19title\n$tag19');"
 rega_script $rega_cmd
 
-#
 # Simpleforecast
-#
 
 regexp "<simpleforecast>(.*?)</simpleforecast>" $input dummy simpleforecast  ; #get simpleforecast
 
-#
 # period 1
-#
 regexp "<period>1(.*?)</forecastday>" $simpleforecast dummy period1 ;
 
 #max temp
@@ -126,9 +122,7 @@ regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp1
 #rain %
 regexp "<pop>(.*?)</pop>" $period1 dummy pop1;
 
-#
 # period 2
-#
 regexp "<period>2(.*?)</forecastday>" $simpleforecast dummy period2 ;
 
 #max temp
@@ -140,9 +134,7 @@ regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp2 ;
 #rain %
 regexp "<pop>(.*?)</pop>" $period2 dummy pop2;
 
-#
 # period 3
-#
 regexp "<period>3(.*?)</forecastday>" $simpleforecast dummy period3 ;
 
 #max temp
@@ -154,9 +146,7 @@ regexp "<celsius>(.*?)</celsius>" $low dummy lowtemp3 ;
 #rain %
 regexp "<pop>(.*?)</pop>" $period3 dummy pop3;
 
-#
-# Write variables to CCU
-#
+# set ReGaHss variables
 set rega_cmd ""
 append rega_cmd "dom.GetObject('Wetter-MaxTemp-Heute').State('$maxtemp1');"
 append rega_cmd "dom.GetObject('Wetter-MinTemp-Heute').State('$lowtemp1');"
