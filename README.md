@@ -17,14 +17,14 @@ Telnet Session (Windows) öffnen:
 
 [FTP](http://www.homematic-inside.de/software/addons/item/ftp) -> Installieren
 
-[Filezilla](https://filezilla-project.org/) -> Ordner aus dem GIT kopieren und nach */usr/local/addons/* kopieren
+[Filezilla](https://filezilla-project.org/) -> Ordner aus dem GIT als Zip herunterladen und nach */usr/local/addons/* kopieren
 
 *   Server:192.168.X.XXX
 *   User:root
 *   Passwort:dein Passwort was beim Telnet gesetzt wurde
 
 #####CCU2:
-[Filezilla](https://filezilla-project.org/) -> Ordner aus dem GIT kopieren und nach */usr/local/addons/* kopieren
+[Filezilla](https://filezilla-project.org/) -> Ordner aus dem GIT als Zip herunterladen und nach */usr/local/addons/* kopieren
 
 *   Server: sftp://192.168.X.XX
 *   User:root
@@ -36,14 +36,14 @@ Telnet Session (Windows) öffnen:
 
 [CUx-Daemon](http://www.homematic-inside.de/software/cuxdaemon) -> Performance schonender Aufruf
 
-*   homematic->Einstellungen->Systemsteuerung->Zusatzsoftware
-*   Cux-Damon->Einstellen
+*   homematic -> Einstellungen -> Systemsteuerung -> Zusatzsoftware
+*   Cux-Damon -> Einstellen
 *   Geräte
 *   CUxD Gerätetyp -> (28)System) 
 
 ![CuxD](https://github.com/nleutner/homematicWeather/blob/develop/addons/homematicWeather/doc/images/Cux%20Exec.jpg?raw=true)
 
-*   homematic->Posteingang  
+*   homematic -> Posteingang
 
 ![homematic](https://raw.github.com/nleutner/homematicWeather/develop/addons/homematicWeather/doc/images/Cux%20CCU.gif)
 
@@ -67,7 +67,8 @@ key                       |Ist dein API key von [wunderground](http://api.wunder
 
 
 ####wunderground-astronomy.tcl
-Diese Programm holt sich Informationen über den Mond, leider stimmen die Werte Mondaufgang/Untergang von der API wunderground nicht.
+Diese Programm holt sich Informationen über den Mond, leider stimmen die Werte Mondaufgang/Monduntergang von der API wunderground nicht.
+> Mondaufgang: 20:05 Monduntergang: 6:47 Sichtbarkeit: 0 % Mondalter: 29 Tage
 
 #####Systemvariabeln
  Name                     | Variablentyp| Werte|Maßeinheit
@@ -115,43 +116,43 @@ dom.GetObject("CUxD.CUX2801001:1.CMD_EXEC").State("cd /usr/local/addons/homemati
 
 ####wunderground-forecast10day.tcl
 Dieses Programm ruft die Wetterprognose für die nächsten 10 Tage auf und schreibt in die Systemvariabel Wetterprognose
-> Donnerstag Heiter. HÃ¶chsttemperatur: 28C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: SÃ¼d-SÃ¼dost.
+> Donnerstag Heiter. Höchsttemperatur: 28C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: Süd-Südost.
 >
->Donnerstag Nacht Heiter. Tiefsttemperatur: 15C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: SÃ¼d-SÃ¼dost.
+>Donnerstag Nacht Heiter. Tiefsttemperatur: 15C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: Süd-Südost.
 >
->Freitag Teils Wolkig. HÃ¶chsttemperatur: 28C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: SÃ¼d-SÃ¼dost.
+>Freitag Teils Wolkig. Höchsttemperatur: 28C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: Süd-Südost.
 >
->Freitag Nacht Teils Wolkig. Tiefsttemperatur: 16C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: SÃ¼d-SÃ¼dost.
+>Freitag Nacht Teils Wolkig. Tiefsttemperatur: 16C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: Süd-Südost.
 >
->Samstag Gewitter mÃ¶glich. HÃ¶chsttemperatur: 26C. Light Wind. Regenrisiko 50%.
+>Samstag Gewitter möglich. Höchsttemperatur: 26C. Light Wind. Regenrisiko 50%.
 >
->Samstag Nacht Gewitter mÃ¶glich. Tiefsttemperatur: 12C. Light Wind. Regenrisiko 50%.
+>Samstag Nacht Gewitter möglich. Tiefsttemperatur: 12C. Light Wind. Regenrisiko 50%.
 >
->Sonntag Gewitter mÃ¶glich. HÃ¶chsttemperatur: 24C. Light Wind. Regenrisiko 40%.
+>Sonntag Gewitter möglich. Höchsttemperatur: 24C. Light Wind. Regenrisiko 40%.
 >
->Sonntag Nacht Gewitter mÃ¶glich. Tiefsttemperatur: 10C. Windgeschwindigkeit: 5-15 km/h. Windrichtung: West-SÃ¼dwest. Regenrisiko 40%.
+>Sonntag Nacht Gewitter möglich. Tiefsttemperatur: 10C. Windgeschwindigkeit: 5-15 km/h. Windrichtung: West-Südwest. Regenrisiko 40%.
 >
->Montag Bedeckt. HÃ¶chsttemperatur: 23C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: West-SÃ¼dwest.
+>Montag Bedeckt. Höchsttemperatur: 23C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: West-Südwest.
 >
->Montag Nacht Bedeckt. Tiefsttemperatur: 9C. Windgeschwindigkeit: 5-10 km/h. Windrichtung: SÃ¼d-SÃ¼dwest.
+>Montag Nacht Bedeckt. Tiefsttemperatur: 9C. Windgeschwindigkeit: 5-10 km/h. Windrichtung: Süd-Südwest.
 >
->Dienstag Wolkig. HÃ¶chsttemperatur: 21C. Windgeschwindigkeit: 10-20 km/h. Windrichtung: SÃ¼dwest.
+>Dienstag Wolkig. Höchsttemperatur: 21C. Windgeschwindigkeit: 10-20 km/h. Windrichtung: Südwest.
 >
->Dienstag Nacht Wolkig. Tiefsttemperatur: 10C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: SÃ¼dwest.
+>Dienstag Nacht Wolkig. Tiefsttemperatur: 10C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: Südwest.
 >
->Mittwoch Wolkig. HÃ¶chsttemperatur: 20C. Windgeschwindigkeit: 15-20 km/h. Windrichtung: SÃ¼dwest.
+>Mittwoch Wolkig. Höchsttemperatur: 20C. Windgeschwindigkeit: 15-20 km/h. Windrichtung: Südwest.
 >
->Mittwoch Nacht Wolkig. Tiefsttemperatur: 9C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: SÃ¼dwest.
+>Mittwoch Nacht Wolkig. Tiefsttemperatur: 9C. Windgeschwindigkeit: 10-15 km/h. Windrichtung: Südwest.
 >
->Donnerstag Regen mÃ¶glich. HÃ¶chsttemperatur: 21C. Windgeschwindigkeit: 10-20 km/h. Windrichtung: West. Regenrisiko 40%.
+>Donnerstag Regen möglich. Höchsttemperatur: 21C. Windgeschwindigkeit: 10-20 km/h. Windrichtung: West. Regenrisiko 40%.
 >
->Donnerstag Nacht Regen mÃ¶glich. Tiefsttemperatur: 7C. Windgeschwindigkeit: 5-15 km/h. Windrichtung: West-SÃ¼dwest-SÃ¼d-SÃ¼dwest.
+>Donnerstag Nacht Regen möglich. Tiefsttemperatur: 7C. Windgeschwindigkeit: 5-15 km/h. Windrichtung: West-Südwest-Süd-Südwest.
 >
->Freitag Teils Wolkig. HÃ¶chsttemperatur: 20C. Light Wind.
+>Freitag Teils Wolkig. Höchsttemperatur: 20C. Light Wind.
 >
 >Freitag Nacht Teils Wolkig. Tiefsttemperatur: 12C. Light Wind. Regenrisiko 40%.
 >
->Samstag Wolkig. HÃ¶chsttemperatur: 20C. Light Wind.
+>Samstag Wolkig. Höchsttemperatur: 20C. Light Wind.
 >
 >Samstag Nacht Wolkig. Tiefsttemperatur: 12C. Light Wind.
 
