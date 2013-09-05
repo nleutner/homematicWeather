@@ -41,11 +41,11 @@ Telnet Session (Windows) öffnen:
 *   Geräte
 *   CUxD Gerätetyp -> (28)System) 
 
-![CuxD](https://github.com/nleutner/homematicWeather/blob/develop/addons/homematicWeather/doc/images/Cux%20Exec.jpg?raw=true)
+![CuxD](https://github.com/nleutner/homematicWeather/blob/master/addons/homematicWeather/doc/images/Cux%20Exec.jpg?raw=true)
 
 *   homematic -> Posteingang
 
-![homematic](https://raw.github.com/nleutner/homematicWeather/develop/addons/homematicWeather/doc/images/Cux%20CCU.gif)
+![homematic](https://raw.github.com/nleutner/homematicWeather/master/addons/homematicWeather/doc/images/Cux%20CCU.gif)
 
 
 
