@@ -1,4 +1,4 @@
-Implementierung der wunderground.com API in die homematc
+Implementierung der wunderground.com API in die homematic
 
 ####Benötigte Addons:
 #####CCU1:
@@ -88,7 +88,6 @@ dom.GetObject("CUxD.CUX2801001:1.CMD_EXEC").State("cd /usr/local/addons/homemati
 Dieses Programm ruft die aktuelle Wetterbedingungen auf und schreibt in die Systemvariabel Wetter-Temp-Aktuell
 > Aktualisierung: September 5, 09:59 CEST Bedingungen: Heiter Temperatur: 18.8 °C Gefült wie: 18.8 °C Luftdruck: 1016 mb Luftfeuchte: 79% Windgeschwindigkeit: 4.8 km/h Windrichtung: Südwest
 
-
 #####Systemvariabeln
  Name                     | Variablentyp| Werte|Maßeinheit
 :-------------------------|:------------|:-----|:-------
@@ -105,6 +104,12 @@ dom.GetObject("CUxD.CUX2801001:1.CMD_EXEC").State("cd /usr/local/addons/homemati
 
 ####wunderground-forecast.tcl
 Der Unterschied zu forecast10day ist, dass das bereitgestellte xml kleiner ist.
+
+#####Systemvariabeln
+ Name                     | Variablentyp| Werte|Maßeinheit
+:-------------------------|:------------|:-----|:-------
+Wetterprognose            |Zeichenkette |      |
+
 #####Aufruf im homematic Programm:
 ```
 dom.GetObject("CUxD.CUX2801001:1.CMD_EXEC").State("cd /usr/local/addons/homematicWeather && tclsh wunderground-forecast.tcl");
