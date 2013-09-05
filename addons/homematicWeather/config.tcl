@@ -1,7 +1,7 @@
 #!/bin/tclsh
 
 # wundergroung API Key
-set key 2b2f838faecd9466
+set key XXX
 
 # Weather Location for API calls
 set ort arnsberg
