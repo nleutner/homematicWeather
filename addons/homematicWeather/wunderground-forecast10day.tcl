@@ -19,6 +19,7 @@ set f [open "/usr/local/addons/homematicWeather/wunderground-forecast10day.xml"]
 set input [read $f]
 close $f
 
+# Forecast
 regexp "<period>0</period>(.*?)</forecastday>" $input dummy current  ; #get current forecastday
 regexp "<title>(.*?)</title>" $current dummy day0title ;
 regexp "<fcttext_metric><!\\\[CDATA\\\[(.*?)]]></fcttext_metric>" $current dummy day0 ;
@@ -100,7 +101,6 @@ regexp "<title>(.*?)</title>" $current dummy day19title ;
 regexp "<fcttext_metric><!\\\[CDATA\\\[(.*?)]]></fcttext_metric>" $current dummy day19 ;
 
 # Simpleforecast
-
 # period 1
 regexp "</date>\n\t\t\t\t\t<period>1(.*?)</forecastday>" $input dummy period1 ;
 #max temp
@@ -146,5 +146,4 @@ append rega_cmd "dom.GetObject('Wetter-MaxTemp-Uebermorgen').State('$maxtemp3');
 append rega_cmd "dom.GetObject('Wetter-MinTemp-Uebermorgen').State('$lowtemp3');"
 append rega_cmd "dom.GetObject('Wetter-Regen-Uebermorgen').State('$pop3');"
 rega_script $rega_cmd
-
 exit 0;
