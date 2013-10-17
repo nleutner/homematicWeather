@@ -9,7 +9,7 @@ source config.tcl
 # config
 set sysvar Wetterprognose
 
-# verwendete Systemvari
+# verwendete Systemvariable zum abspeichern der Wetterprognose als Text
 #   Wetterprognose   Zeichenkette
 
 
