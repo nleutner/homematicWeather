@@ -34,4 +34,5 @@ append rega_cmd "dom.GetObject('$sysvar').State('Aktualisierung: $observation_ti
 append rega_cmd "dom.GetObject('Wetter-Temp-Aktuell').State('$temp_c');"
 rega_script $rega_cmd
 
+
 exit 0;
