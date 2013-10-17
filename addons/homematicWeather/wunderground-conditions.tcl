@@ -39,6 +39,4 @@ rega_script $rega_cmd
 set rega_cmd ""
 append rega_cmd "conditions = dom.GetObject('Wetter-Temp-Aktuell').State('$temp_c');"
 rega_script $rega_cmd
-
-
-
+exit 0;

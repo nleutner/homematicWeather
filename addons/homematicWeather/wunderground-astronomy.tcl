@@ -36,3 +36,4 @@ regexp "<minute>(.*?)</minute>" $current dummy sunrisem  ;
 set rega_cmd ""
 append rega_cmd "dom.GetObject('$sysvar').State('Mondaufgang: $sunseth:$sunsetm\nMonduntergang: $sunriseh:$sunrisem\nSichtbarkeit: $percentIlluminated %\nMondalter: $ageOfMoon Tage');"
 rega_script $rega_cmd
+exit 0;
