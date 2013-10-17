@@ -146,4 +146,5 @@ append rega_cmd "dom.GetObject('Wetter-MaxTemp-Uebermorgen').State('$maxtemp3');
 append rega_cmd "dom.GetObject('Wetter-MinTemp-Uebermorgen').State('$lowtemp3');"
 append rega_cmd "dom.GetObject('Wetter-Regen-Uebermorgen').State('$pop3');"
 rega_script $rega_cmd
+
 exit 0;
