@@ -10,12 +10,12 @@ source conf/config.tcl
 set sysvar Wetterprognose
 
 set url http://api.wunderground.com/api/$key/forecast10day/lang:DL/q/Germany/$ort.xml
-if { [catch {exec /usr/bin/wget -q -O /usr/local/addons/homematicWeather/wunderground-forecast10day.xml $url} error] } {
+if { [catch {exec /usr/bin/wget -q -O /usr/local/addons/homematicWeather/wunderground-forecast.xml $url} error] } {
     puts stderr "Could not reach $url \n$error"
     exit 1
 }
 
-set f [open "/usr/local/addons/homematicWeather/wunderground-forecast10day.xml"]
+set f [open "/usr/local/addons/homematicWeather/wunderground-forecast.xml"]
 set input [read $f]
 close $f
 
